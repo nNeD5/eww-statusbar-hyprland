@@ -1,0 +1,1 @@
+# eww-statusbar-hyprland
