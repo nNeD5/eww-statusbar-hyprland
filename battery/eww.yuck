@@ -1,0 +1,25 @@
+(defpoll capacity :interval "1s"
+              :initial "0%"
+  "~/.config/eww/statsubar/battery/get-battery-percentage.sh")
+
+(deflisten status
+              :initial ""
+  "~/.config/eww/statsubar/battery/get-battery-status.sh")
+
+
+(defwindow test
+    :monitor 0
+    :geometry (geometry
+                  :x "0%"
+                  :y "0%"
+                  :width "100%"
+                  :height "0%"
+                  :anchor "top center"
+              )
+    :halign "start"
+    :stacking "bg"
+    :windowtype "dock"
+    :exclusive true
+    :wm-ignore false
+"${status}${capacity}"
+)

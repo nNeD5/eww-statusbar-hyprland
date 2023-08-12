@@ -1,0 +1,17 @@
+(defpoll capacity :interval "5m"
+              :initial "0%"
+  "./battery/get-battery-percentage.sh")
+
+(deflisten status
+              :initial ""
+  "./battery/get-battery-status.sh")
+
+
+(defwidget battery []
+    (box
+        :class "battery"
+        :halign "start"
+        :orientation "v"
+        (button "${status}${capacity}")
+    )
+)

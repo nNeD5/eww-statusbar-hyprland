@@ -1,0 +1,12 @@
+(defpoll date :interval "10s"
+              :initial "00:00"
+  "./date/get-date.sh")
+
+
+(defwidget date []
+    (box
+        :halign "start"
+        :class "date_box"
+        (button "${date}")
+    )
+)

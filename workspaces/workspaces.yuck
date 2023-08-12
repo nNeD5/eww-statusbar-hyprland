@@ -1,0 +1,20 @@
+; (deflisten workspaces_list :initial "[1]" "./workspaces/get-workspaces-list.sh")
+(deflisten workspaces_list :initial "[1]" "./workspaces/get-workspaces-list.sh")
+(deflisten workspaces_active :initial "0" "./workspaces/get-active-workspace.sh")
+(defvar workspaces_change  "./workspaces/change-workspace.sh")
+
+(defwidget workspaces []
+    (box
+        :orientation "h"
+        :halign "start"
+        :valign "center"
+        (for workspace in workspaces_list
+            (button
+                :onclick "${workspaces_change} ${workspace}"
+                :halign "start"
+                :class {workspace == workspaces_active ? "workspcae_active" : "workspcae_inactive"}
+                workspace
+            )
+        )
+    )
+)

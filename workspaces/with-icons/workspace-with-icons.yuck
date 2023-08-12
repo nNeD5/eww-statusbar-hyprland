@@ -1,0 +1,20 @@
+(deflisten workspaces_list :initial "[1]" "~/.config/eww/statsubar/workspaces/with-icons/get-workspaces-list.sh")
+(deflisten workspaces_active :initial "0" "./workspaces/with-icons/active.sh")
+(defvar workspaces_change  "./workspaces/with-icons/change-workspace.sh")
+
+
+(defwidget workspaces []
+    (box
+        :orientation "h"
+        :halign "start"
+        :valign "center"
+        (for workspace in {captures("${workspaces_list}", "[^ ]")}
+            (button
+                :onclick "${workspaces_change} '${workspace[0]}'"
+                :halign "start"
+                :class {"${workspace[0]}" == workspaces_active ? "workspcae_active" : "workspcae_inactive"}
+                "${workspace[0]}"
+            )
+        )
+    )
+)

@@ -1,0 +1,49 @@
+(include "./workspaces/workspaces.yuck")
+(include "./date/date.yuck")
+(include "./battery/battery.yuck")
+(include "./volume/volume.yuck")
+
+
+(defwindow bar
+    :monitor 0
+    :geometry (geometry
+                  :x "0%"
+                  :y "0%"
+                  :width "100%"
+                  :height "0%"
+                  :anchor "top center"
+              )
+    :halign "start"
+    :stacking "bg"
+    :windowtype "dock"
+    :exclusive true
+    :wm-ignore false
+    (centerbox :class "dockbox"
+        (box :haling "start" (workspaces))
+        (box :haling "center" (date))
+        (box :halign "end" (battery) (volume))
+    )
+)
+
+
+(defwindow bar1
+    :monitor 1
+    :geometry (geometry
+                  :x "0%"
+                  :y "0%"
+                  :width "100%"
+                  :height "0%"
+                  :anchor "top center"
+              )
+    :halign "start"
+    :stacking "fg"
+    :windowtype "dock"
+    :exclusive true
+    :wm-ignore false
+    (centerbox :class "dockbox"
+        (box :haling "start" (workspaces))
+        (box :haling "center" (date))
+        (box :halign "end" (battery) (volume))
+    )
+)
+

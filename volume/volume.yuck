@@ -1,0 +1,12 @@
+(defpoll volume_value :interval "1s"
+              :initial "0%"
+  "./volume/get-volume.sh")
+
+
+(defwidget volume []
+    (box
+        :class "volume"
+        :halign "start"
+        (button "${volume_value}")
+    )
+)
